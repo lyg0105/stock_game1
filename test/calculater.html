@@ -1,12 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
  <head>
   <meta charset="UTF-8">
-  <meta name="Generator" content="EditPlus¢ç">
   <meta name="Author" content="">
   <meta name="Keywords" content="">
   <meta name="Description" content="">
-  <title>°è»ê±â</title>
+  <title>ê³„ì‚°ê¸°</title>
 <style>
 input{
 width:90pt;
@@ -21,16 +20,16 @@ font-size:40pt;
 </style>
 
  <script>
- var s="";	//textbox¿¡ ³ªÅ¸³¾ °ª
- var stats="N";	//°è¼Ó ¼ıÀÚ¸¦ ÀÔ·ÂÁßÀÎÁö ¾Ë±âÀ§ÇÑ »óÅÂ°ª
- var stats2="N";	//°á°úÃâ·ÂÀ» À§ÇØ ¿¬»êÀÚ¸¦ ¸¶Áö¸·¿¬»êÀÚ¸¦ ÀúÀåÇØ ³õ´Â »óÅÂ°ª
- var a=0.0;		//ÀÌÀü¿¡ ÀÔ·ÂµÇ¾ú´ø °ªÀ» ÀúÀåÇØµÎ±âÀ§ÇÑ °ª
- var pownum=0;	//pow¸¦À§ÇÑ °öÇÏ±â ÀúÀå°ª
- function receve(rec){		//¼ıÀÚÅ°¿Í ¿¬»êÀÚÅ°¸¦ ¹Ş´Â´Ù.
+ var s="";	//textboxì— ë‚˜íƒ€ë‚¼ ê°’
+ var stats="N";	//ê³„ì† ìˆ«ìë¥¼ ì…ë ¥ì¤‘ì¸ì§€ ì•Œê¸°ìœ„í•œ ìƒíƒœê°’
+ var stats2="N";	//ê²°ê³¼ì¶œë ¥ì„ ìœ„í•´ ì—°ì‚°ìë¥¼ ë§ˆì§€ë§‰ì—°ì‚°ìë¥¼ ì €ì¥í•´ ë†“ëŠ” ìƒíƒœê°’
+ var a=0.0;		//ì´ì „ì— ì…ë ¥ë˜ì—ˆë˜ ê°’ì„ ì €ì¥í•´ë‘ê¸°ìœ„í•œ ê°’
+ var pownum=0;	//powë¥¼ìœ„í•œ ê³±í•˜ê¸° ì €ì¥ê°’
+ function receve(rec){		//ìˆ«ìí‚¤ì™€ ì—°ì‚°ìí‚¤ë¥¼ ë°›ëŠ”ë‹¤.
  	 var tx=document.getElementById("txt");
 	 var tx2=document.getElementById("txt2");
  	 var oper=rec;
-  	if(oper=="+"){	//¿¬»êÀÚÀÔ·ÂÀÏ¶§
+  	if(oper=="+"){	//ì—°ì‚°ìì…ë ¥ì¼ë•Œ
 		result();
   	 	stats="+";
 		stats2="+";
@@ -51,46 +50,46 @@ font-size:40pt;
 		stats2="*";
 		tx2.value+="*";
   	}else if(oper=="sin"){
-		stats2="sin";//sinÀº µÎ¹øÂ°¼ıÀÚ ÀÔ·Â¾øÀÌ ¹Ù·Î result½ÇÇà
+		stats2="sin";//sinì€ ë‘ë²ˆì§¸ìˆ«ì ì…ë ¥ì—†ì´ ë°”ë¡œ resultì‹¤í–‰
 		result();
   	 	stats="sin";
 		tx2.value+="sin";
   	}else if(oper=="cos"){
-		stats2="cos";//cosÀº µÎ¹øÂ°¼ıÀÚ ÀÔ·Â¾øÀÌ ¹Ù·Î result½ÇÇà
+		stats2="cos";//così€ ë‘ë²ˆì§¸ìˆ«ì ì…ë ¥ì—†ì´ ë°”ë¡œ resultì‹¤í–‰
 		result();
   	 	stats="cos";
 		tx2.value+="cos";
   	}else if(oper=="tan"){
-		stats2="tan";//tanÀº µÎ¹øÂ°¼ıÀÚ ÀÔ·Â¾øÀÌ ¹Ù·Î result½ÇÇà
+		stats2="tan";//tanì€ ë‘ë²ˆì§¸ìˆ«ì ì…ë ¥ì—†ì´ ë°”ë¡œ resultì‹¤í–‰
 		result();
   	 	stats="tan";
 		tx2.value+="tan";
   	}else if(oper=="root"){
-		stats2="root";//rootÀº µÎ¹øÂ°¼ıÀÚ ÀÔ·Â¾øÀÌ ¹Ù·Î result½ÇÇà
+		stats2="root";//rootì€ ë‘ë²ˆì§¸ìˆ«ì ì…ë ¥ì—†ì´ ë°”ë¡œ resultì‹¤í–‰
 		result();
   	 	stats="root";
 		tx2.value+="root";
   	}else if(oper=="pow"){
 		stats2="pow";
-		result();//powÀº µÎ¹øÂ°¼ıÀÚ ÀÔ·Â¾øÀÌ ¹Ù·Î result½ÇÇà
+		result();//powì€ ë‘ë²ˆì§¸ìˆ«ì ì…ë ¥ì—†ì´ ë°”ë¡œ resultì‹¤í–‰
   	 	stats="pow";
 		tx2.value+="pow";
   	}else if(oper=="deg"){
 		stats2="deg";
-		result();//degÀº µÎ¹øÂ°¼ıÀÚ ÀÔ·Â¾øÀÌ ¹Ù·Î result½ÇÇà
+		result();//degì€ ë‘ë²ˆì§¸ìˆ«ì ì…ë ¥ì—†ì´ ë°”ë¡œ resultì‹¤í–‰
   	 	stats="deg";
 		tx2.value+="deg";
   	}else if(oper=="rad"){
 		stats2="rad";
-		result();//radÀº µÎ¹øÂ°¼ıÀÚ ÀÔ·Â¾øÀÌ ¹Ù·Î result½ÇÇà
+		result();//radì€ ë‘ë²ˆì§¸ìˆ«ì ì…ë ¥ì—†ì´ ë°”ë¡œ resultì‹¤í–‰
   	 	stats="rad";
 		tx2.value+="rad";
-  	}else{		//¼ıÀÚÅ°ÀÏ¶§.
+  	}else{		//ìˆ«ìí‚¤ì¼ë•Œ.
   		 tx2.value+=oper;
   		 if(stats=="N"){
   	 		s+=oper;
 			
-  	 	}else if(stats=="+"){//¹Ù·ÎÀü¿¡ ´­¸° ¹öÆ°ÀÌ ¿¬»êÀÚ ¿´´Ù¸é Àü¿¡ÀÔ·ÂµÈ °ªÀ» a¿¡ ÀúÀåÇÏ°í, ¿¬¼ÓÀÔ·Â »óÅÂ°ª NÀ¸·Î º¯°æ.
+  	 	}else if(stats=="+"){//ë°”ë¡œì „ì— ëˆŒë¦° ë²„íŠ¼ì´ ì—°ì‚°ì ì˜€ë‹¤ë©´ ì „ì—ì…ë ¥ëœ ê°’ì„ aì— ì €ì¥í•˜ê³ , ì—°ì†ì…ë ¥ ìƒíƒœê°’ Nìœ¼ë¡œ ë³€ê²½.
   	  		oper=parseFloat(oper);
   	  		a=parseFloat(s);
 			s="";
@@ -116,28 +115,28 @@ font-size:40pt;
 			stats="N";
   	 	}
   	}
-  		tx.value=s;//ÇöÁ¦ÀÔ·Â°ª ¹× °á°ú¸¦ Ãâ·ÂÇÑ´Ù.
+  		tx.value=s;//í˜„ì œì…ë ¥ê°’ ë° ê²°ê³¼ë¥¼ ì¶œë ¥í•œë‹¤.
 		
  	}
- function operation(rec){		//C¹öÆ°°ú =¹öÆ°À» ¹Ş´Â´Ù.
+ function operation(rec){		//Cë²„íŠ¼ê³¼ =ë²„íŠ¼ì„ ë°›ëŠ”ë‹¤.
   	var tx=document.getElementById("txt");
 	var tx2=document.getElementById("txt2");
   	var oper=rec;
-  	if(oper=="C"){		//C¹öÆ°ÀÏ¶§
+  	if(oper=="C"){		//Cë²„íŠ¼ì¼ë•Œ
   		tx.value=0;
 		tx2.value="";
   		stats="N"
 		stats2="N";
   	 	s="";
 		 a=0;
-  	}else if(oper=="="){	//=¹öÆ°ÀÏ¶§
+  	}else if(oper=="="){	//=ë²„íŠ¼ì¼ë•Œ
 		result();
   	}
  	}
- function result(){		//°á°úÃâ·Â
+ function result(){		//ê²°ê³¼ì¶œë ¥
 	var tx=document.getElementById("txt");
 	var tx2=document.getElementById("txt2");
-	if(stats2!="N"){			//»óÅÂ°ª2°¡ NÀÌ ¾Æ´Ñ°æ¿ì °á°ú°ªÀ»Ãâ·ÂÇÑ´Ù.
+	if(stats2!="N"){			//ìƒíƒœê°’2ê°€ Nì´ ì•„ë‹Œê²½ìš° ê²°ê³¼ê°’ì„ì¶œë ¥í•œë‹¤.
 		if(stats2=="+"){
   		  	a=a+parseFloat(s);
 		}else if(stats2=="-"){
@@ -166,7 +165,7 @@ font-size:40pt;
   	 	}
 		stats2="N";
   		stats="N";
-		tx.value=a+"";//°á°ú¸¦ Ãâ·ÂÇÑ´Ù.
+		tx.value=a+"";//ê²°ê³¼ë¥¼ ì¶œë ¥í•œë‹¤.
 		tx2.value+="="+a;
 		s=a;
 		}
@@ -219,5 +218,6 @@ font-size:40pt;
 	</tr>
 	</table>
 </center>
+	 <a href="/lyg0105/stock_game1/" >í™ˆ</a>
  </body>
 </html>
