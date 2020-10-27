@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>PlanGame</title>
+<link rel="stylesheet" type="text/css" href="../css1.css">
+<style>
+	#bg_img{
+		background:url("../imgs/earth1.png") no-repeat;
+		background-size:6000px 4000px;
+		background-position:-2000px -3200px;
+		width:800px;
+		height:800px;
+	}
+</style>
+<script src="../vars1.js"></script>
+<script src="../vars2.js"></script>
+<script src="../vars3.js"></script>
+<script src="../vars4.js"></script>
+<script src="../basic_process.js"></script>
+<script src="../init_process.js"></script>
+<script src="../canvas_ctr.js"></script>
+<script src="../iam_process.js"></script>
+<script src="../enermy_process.js"></script>
+<script src="../lv_process.js"></script>
+<script src="../lv_infinit.js"></script>
+<script src="../lv_1.js"></script>
+<script src="../lv_2.js"></script>
+<script src="../lv_3.js"></script>
+
+</head>
+<body bgcolor="black" onload="app()" onKeyDown="mkeyDown()" onKeyUp="mkeyUp()">
+	<div id="box" onClick="mOnClick()" onmousemove="mOnmove()">
+		<div id="bg_img">
+		<span id="mscharg">Charge</span>
+		<span id="showm" align="center">야</span>	
+		<span id="timer" align="center">시간</span>
+		<span type="text" id="point" name="d_bt">점수:0</span>
+		<span type="text" id="money" name="d_bt">money:0</span>
+		</div>
+	</div>
+	<div id="box2">
+		각도         <input type="text" id="txt1" style="width:50px;"><br>
+		내Ms<input type="text" id="txt2" style="width:50px;"><br>
+		적 수        <input type="text" id="txt3" style="width:50px;"><br>
+		적Ms      <input type="text" id="txt4" style="width:50px;"><br><br><br><br>
+	    쉴드         <input type="text" id="txt5" style="width:50px;color:blue;"><br><br>
+	    <span id="goal" align="center">현제목표<br>아직없다!</span>
+	    <span id="helps" align="center">방향키:wasd<br>미사일:space<br>화면중앙:c<br>
+	    		마우스move:m<br>fire(f)버튼은 자동발사<br>점수20=돈1<br>총알2는 랜덤발사<br>정거장이 있다.
+	    </span>
+	    
+	</div>
+	<div id="box3" align="center">
+		<input type="button" id="up_bt" value="UP" name="d_bt" onClick="joyClick('UP')"><br>
+		<input type="button" id="left_bt" value="Left" name="d_bt" onClick="joyClick('Left')">
+		<input type="button" id="down_bt" value="Down" name="d_bt" onClick="joyClick('Down')">
+		<input type="button" id="right_bt" value="Right" name="d_bt" onClick="joyClick('Right')">
+		<input type="button" id="f_bt" value="Fire" name="d_bt" onClick="joyClick('Fire')">
+		<input type="button" id="u_bt" value="Upgrade" name="d_bt" onClick="joyClick('Upgrade')">
+		<select id="bul_selcect" onchange="joyClick('bulChange')">
+			<option value="0">총알1</option>
+			<option value="1">총알2</option>
+		</select>
+		<input type="button" id="c_bt" value="Center" name="d_bt" onClick="joyClick('Center')">
+		<input type="button" id="m_bt" value="Mouse" name="d_bt" onClick="joyClick('Mouse')">
+		<select id="lv_selcect">
+			<option value="0">무한모드</option>
+			<option value="1">1stage</option>
+		</select>
+		<input type="button" id="start_bt" value="Start" name="d_bt" onClick="joyClick('Start')">
+		<span id="bul_span">■</span>
+		
+		
+	</div>
+	<div id="box4" align="center">
+		<canvas id="map" width="180px" height="120px" style="border:5px solid red;"></canvas>
+	</div>
+	
+</body>
+</html>
