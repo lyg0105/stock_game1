@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>계산기</title>
+<style>
+input{
+width:90pt;
+height:60pt;
+font-size:40pt;
+}
+td{
+width:100pt;
+height:60pt;
+font-size:40pt;
+}
+</style>
+
+ <script>
+ var s="";	//textbox에 나타낼 값
+ var stats="N";	//계속 숫자를 입력중인지 알기위한 상태값
+ var stats2="N";	//결과출력을 위해 연산자를 마지막연산자를 저장해 놓는 상태값
+ var a=0.0;		//이전에 입력되었던 값을 저장해두기위한 값
+ var pownum=0;	//pow를위한 곱하기 저장값
+ function receve(rec){		//숫자키와 연산자키를 받는다.
+ 	 var tx=document.getElementById("txt");
+	 var tx2=document.getElementById("txt2");
+ 	 var oper=rec;
+  	if(oper=="+"){	//연산자입력일때
+		result();
+  	 	stats="+";
+		stats2="+";
+		tx2.value+="+";
+  	}else if(oper=="-"){
+		result();
+  	 	stats="-";
+		stats2="-";
+		tx2.value+="-";
+  	}else if(oper=="/"){
+		result();
+  	 	stats="/";
+		stats2="/";
+		tx2.value+="/";
+  	}else if(oper=="*"){
+		result();
+  	 	stats="*";
+		stats2="*";
+		tx2.value+="*";
+  	}else if(oper=="sin"){
+		stats2="sin";//sin은 두번째숫자 입력없이 바로 result실행
+		result();
+  	 	stats="sin";
+		tx2.value+="sin";
+  	}else if(oper=="cos"){
+		stats2="cos";//cos은 두번째숫자 입력없이 바로 result실행
+		result();
+  	 	stats="cos";
+		tx2.value+="cos";
+  	}else if(oper=="tan"){
+		stats2="tan";//tan은 두번째숫자 입력없이 바로 result실행
+		result();
+  	 	stats="tan";
+		tx2.value+="tan";
+  	}else if(oper=="root"){
+		stats2="root";//root은 두번째숫자 입력없이 바로 result실행
+		result();
+  	 	stats="root";
+		tx2.value+="root";
+  	}else if(oper=="pow"){
+		stats2="pow";
+		result();//pow은 두번째숫자 입력없이 바로 result실행
+  	 	stats="pow";
+		tx2.value+="pow";
+  	}else if(oper=="deg"){
+		stats2="deg";
+		result();//deg은 두번째숫자 입력없이 바로 result실행
+  	 	stats="deg";
+		tx2.value+="deg";
+  	}else if(oper=="rad"){
+		stats2="rad";
+		result();//rad은 두번째숫자 입력없이 바로 result실행
+  	 	stats="rad";
+		tx2.value+="rad";
+  	}else{		//숫자키일때.
+  		 tx2.value+=oper;
+  		 if(stats=="N"){
+  	 		s+=oper;
+			
+  	 	}else if(stats=="+"){//바로전에 눌린 버튼이 연산자 였다면 전에입력된 값을 a에 저장하고, 연속입력 상태값 N으로 변경.
+  	  		oper=parseFloat(oper);
+  	  		a=parseFloat(s);
+			s="";
+  	  		s+=oper;
+			stats="N";
+  		 }else if(stats=="-"){
+  	  		oper=parseFloat(oper);
+  	  		a=parseFloat(s);
+			s="";
+  	  		s+=oper;
+			stats="N";
+  		 }else if(stats=="/"){
+  	  		oper=parseFloat(oper);
+  	  		a=parseFloat(s);
+			s="";
+  	  		s+=oper;
+			stats="N";
+  	 	}else if(stats=="*"){
+  	  		oper=parseFloat(oper);
+  	  		a=parseFloat(s);
+			s="";
+  	  		s+=oper;
+			stats="N";
+  	 	}
+  	}
+  		tx.value=s;//현제입력값 및 결과를 출력한다.
+		
+ 	}
+ function operation(rec){		//C버튼과 =버튼을 받는다.
+  	var tx=document.getElementById("txt");
+	var tx2=document.getElementById("txt2");
+  	var oper=rec;
+  	if(oper=="C"){		//C버튼일때
+  		tx.value=0;
+		tx2.value="";
+  		stats="N"
+		stats2="N";
+  	 	s="";
+		 a=0;
+  	}else if(oper=="="){	//=버튼일때
+		result();
+  	}
+ 	}
+ function result(){		//결과출력
+	var tx=document.getElementById("txt");
+	var tx2=document.getElementById("txt2");
+	if(stats2!="N"){			//상태값2가 N이 아닌경우 결과값을출력한다.
+		if(stats2=="+"){
+  		  	a=a+parseFloat(s);
+		}else if(stats2=="-"){
+  		  	a=a-parseFloat(s);
+  		}else if(stats2=="/"){
+  		  	a=a/parseFloat(s);
+  		}else if(stats2=="*"){
+  		  	a=a*parseFloat(s);
+  	 	}else if(stats2=="sin"){
+			a=Math.sin((parseFloat(s)*Math.PI)/180);
+  	 	}else if(stats2=="cos"){
+			a=Math.cos((parseFloat(s)*Math.PI)/180);
+  	 	}else if(stats2=="tan"){
+			a=Math.tan((parseFloat(s)*Math.PI)/180);
+  	 	}else if(stats2=="root"){
+			a=Math.sqrt(parseFloat(s));
+  	 	}else if(stats2=="pow"){
+			if(a==0){
+			a=parseFloat(s)*parseFloat(s);
+			pownum=parseFloat(s);
+			}else{a=a*pownum;}
+  	 	}else if(stats2=="deg"){
+			a=(180/Math.PI)*parseFloat(s);
+  	 	}else if(stats2=="rad"){
+			a=(parseFloat(s)*Math.PI)/180;
+  	 	}
+		stats2="N";
+  		stats="N";
+		tx.value=a+"";//결과를 출력한다.
+		tx2.value+="="+a;
+		s=a;
+		}
+	
+	}	
+ </script>
+ </head>
+ <body>
+	
+	<center>
+  	<input type='textarea' id="txt2" value="" style='text-align:center;width:500pt;heigt:200pt;font-size:15pt'>
+	<table border=1 width="650px">
+	<tr align=center>
+		<td colspan="5"><input type='text' id="txt" value="0" style='text-align:right;width:450pt;'></td>
+	</tr>
+	<tr align=center>
+		<td><input type='button' value="sin" id="bt_sin" onClick="receve('sin')"></td>
+		<td><input type='button' value="cos" id="bt_sin" onClick="receve('cos')"></td>
+		<td><input type='button' value="tan" id="bt_sin" onClick="receve('tan')"></td>
+		<td><input type='button' value="To Degrees" id="bt_deg" onClick="receve('deg')" style="font-size:15pt;"></td>
+		<td><input type='button' value="To Radians" id="bt_rad" onClick="receve('rad')" style="font-size:15pt;"></td>
+	</tr>
+	<tr align=center>
+		<td><input type='button' value="7" id="bt7" onClick="receve(7)"></td>
+		<td><input type='button' value="8" id="bt8" onClick="receve(8)"></td>
+		<td><input type='button' value="9" id="bt9" onClick="receve(9)"></td>
+		<td><input type='button' value="+" id="bt_plus" onClick="receve('+')"></td>
+		<td><input type='button' value="root" id="bt_root" onClick="receve('root')"></td>
+	</tr>
+	<tr align=center>
+		<td><input type='button' value="4" id="bt4" onClick="receve(4)"></td>
+		<td><input type='button' value="5" id="bt5" onClick="receve(5)"></td>
+		<td><input type='button' value="6" id="bt6" onClick="receve(6)"></td>
+		<td><input type='button' value="-" id="bt_minus" onClick="receve('-')"></td>
+		<td><input type='button' value="pow(x)" id="bt_pow" onClick="receve('pow')" style="font-size:25pt;"></td>
+	</tr>
+	<tr align=center>
+		<td><input type='button' value="1" id="bt1" onClick="receve(1)"></td>
+		<td><input type='button' value="2" id="bt2" onClick="receve(2)"></td>
+		<td><input type='button' value="3" id="bt3" onClick="receve(3)"></td>
+		<td><input type='button' value="*" id="bt_mulpy" onClick="receve('*')"></td>
+		<td><input type='button' value="pie" id="bt_pi" onClick="receve(Math.PI)"></td>
+	</tr>
+	<tr align=center>
+		<td><input type='button' value="C" id="bt_clear" onClick="operation('C')"></td>
+		<td><input type='button' value="0" id="bt0" onClick="receve(0)"></td>
+		<td><input type='button' value="." id="bt_dot" onClick="receve('.')"></td>
+		<td><input type='button' value="/" id="bt_div" onClick="receve('/')"></td>
+		<td><input type='button' value="=" id="bt_result" onClick="operation('=')"></td>
+	</tr>
+	</table>
+</center>
+ </body>
+</html>
